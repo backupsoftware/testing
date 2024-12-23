@@ -1,0 +1,29 @@
+.form-card {
+    max-width: 400px;
+    margin: 2rem auto;
+}
+
+.text-danger {
+    color: red;
+}
+
+.text-success {
+    color: green;
+}
+
+.feedback {
+    display: none;
+}
+
+.feedback div {
+    display: flex;
+    justify-content: space-between;
+}
+
+.progress {
+    height: 8px;
+}
+
+.progress-bar {
+    font-size: 10px;
+}

@@ -1,0 +1,61 @@
+.form-card {
+    max-width: 400px;
+    margin: 2rem auto;
+}
+
+.text-danger {
+    color: red;
+}
+
+.text-success {
+    color: green;
+}
+
+.feedback {
+    display: none;
+}
+
+.feedback div {
+    display: flex;
+    justify-content: space-between;
+}
+
+.progress {
+    height: 8px;
+}
+
+.progress-bar {
+    font-size: 10px;
+}
+
+  /* Email field container with relative positioning */
+  .email-field {
+    position: relative;
+}
+
+/* Send OTP button inside input field */
+.send-otp-btn {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    border: none;
+    background-color: #0d6efd;
+    color: #fff;
+    border-radius: 5px;
+    padding: 5px 12px;
+    font-size: 12px;
+    cursor: pointer;
+    z-index: 10;
+    display: none;
+    /* Initially hidden */
+}
+
+.send-otp-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Prevent input text from hiding behind button */
+.email-input {
+    padding-right: 90px;
+}

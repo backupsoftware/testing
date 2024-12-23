@@ -11,15 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('companies', function (Blueprint $table) {
+            // Default table id
             $table->id();
 
             // Unique company ID with auto-increment, starting from 1 and max length of 6 digits
             $table->Integer('Company_Id')->nullable();
 
             // Mandatory fields
-            $table->string('Person_Name');
-            $table->string('Person_Email');
+            $table->string('Company_Name');
+            $table->string('Company_Super_Admin_Email');
             $table->string('password');
 
             // Subscription plans
@@ -45,38 +46,24 @@ return new class extends Migration
             $table->string('Company_Website')->nullable();
             $table->string('Company_Location')->nullable();
             $table->string('Company_Address')->nullable();
-            $table->string('Person_Mobile_Number')->nullable();
+            $table->string('Company_Super_Admin_Mobile_Number')->nullable();
 
             // Role and account status
-            $table->integer('Person_Role')->nullable();
-            $table->boolean('Person_Status')->default(false); // Active/Inactive
-            $table->boolean('Person_Person_Account_Activated')->nullable();
+            $table->integer('Company_Person_Role')->nullable();
+            $table->boolean('Company_Status')->default(false); // Active/Inactive
+            $table->boolean('Company_Person_Account_Activated')->nullable();
             $table->timestamp('Company_Person_First_Signin')->nullable();
             $table->timestamp('Company_Person_Last_Signin')->nullable();
 
             // Multi-factor authentication
-            $table->boolean('Person_User_MFA')->nullable();
+            $table->boolean('Company_MFA')->nullable();
+            $table->boolean('Company_User_MFA')->nullable();
 
             // Time Zone & Timestamps
-            $table->timestamp('Person_Time_Zone')->nullable();
+            $table->timestamp('Company_Time_Zone')->nullable();
 
             // Default created_at and updated_at timestamps
             $table->timestamps();
-        });
-
-        Schema::create('password_reset_tokens', function (Blueprint $table) {
-            $table->string('email')->primary();
-            $table->string('token');
-            $table->timestamp('created_at')->nullable();
-        });
-
-        Schema::create('sessions', function (Blueprint $table) {
-            $table->string('id')->primary();
-            $table->foreignId('user_id')->nullable()->index();
-            $table->string('ip_address', 45)->nullable();
-            $table->text('user_agent')->nullable();
-            $table->longText('payload');
-            $table->integer('last_activity')->index();
         });
     }
 
@@ -85,8 +72,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
-        Schema::dropIfExists('password_reset_tokens');
-        Schema::dropIfExists('sessions');
+        Schema::dropIfExists('companies');
     }
 };
